@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý Công việc</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header: Nút Đăng ký/Đăng nhập -->
+  <div id="header-buttons">
+    <button id="register-btn" onclick="showRegister()">Đăng ký</button>
+    <button id="login-btn" onclick="showLogin()">Đăng nhập</button>
+  </div>
+
+  <!-- Hiển thị thông tin người dùng đã đăng nhập -->
+  <div id="user-info" class="user-info" style="display: none;">
+    <img id="user-avatar" src="default-avatar.png" alt="Avatar" class="avatar">
+    <span id="user-name"></span>
+    <button id="logout-btn" onclick="logout()">Đăng xuất</button>
+  </div>
+
+  <!-- Popup Đăng ký -->
+  <div id="register-section" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="hideModal('register-section')">&times;</span>
+      <h2>Đăng ký</h2>
+      <form id="register-form">
+        <input type="text" id="register-username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="register-password" placeholder="Mật khẩu" required>
+        <button type="submit">Đăng ký</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Popup Đăng nhập -->
+  <div id="login-section" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="hideModal('login-section')">&times;</span>
+      <h2>Đăng nhập</h2>
+      <form id="login-form">
+        <input type="text" id="login-username" placeholder="Tên đăng nhập" required>
+        <input type="password" id="login-password" placeholder="Mật khẩu" required>
+        <button type="submit">Đăng nhập</button>
+      </form>
+    </div>
+  </div>
+  
+  <div id="notification" class="notification" style="display: none;">
+    <p id="notification-message"></p>
+  </div>
+  
+  <!-- Quản lý Admin Panel -->
+  <div id="admin-panel" style="display: none;">
+    <h2>Quản Lý Người dùng</h2>
+    <!-- Bộ Lọc và Tìm Kiếm Người Dùng -->
+    <div id="user-filter-search">
+      <h3>Lọc Người Dùng</h3>
+      <button onclick="filterUsers('A')">A</button>
+      <button onclick="filterUsers('B')">B</button>
+      <button onclick="filterUsers('C')">C</button>
+        <button onclick="filterUsers('D')">D</button>
+        <button onclick="filterUsers('E')">E</button>
+        <button onclick="filterUsers('F')">F</button>
+        <button onclick="filterUsers('G')">G</button>
+        <button onclick="filterUsers('H')">H</button>
+        <button onclick="filterUsers('I')">I</button>
+        <button onclick="filterUsers('J')">J</button>
+        <button onclick="filterUsers('K')">K</button>
+        <button onclick="filterUsers('L')">L</button>
+        <button onclick="filterUsers('M')">M</button>
+        <button onclick="filterUsers('N')">N</button>
+        <button onclick="filterUsers('O')">O</button>
+        <button onclick="filterUsers('P')">P</button>
+        <button onclick="filterUsers('Q')">Q</button>
+        <button onclick="filterUsers('R')">R</button>
+        <button onclick="filterUsers('S')">S</button>
+        <button onclick="filterUsers('T')">T</button>
+        <button onclick="filterUsers('U')">U</button>
+        <button onclick="filterUsers('V')">V</button>
+        <button onclick="filterUsers('W')">W</button>
+        <button onclick="filterUsers('X')">X</button>
+        <button onclick="filterUsers('Y')">Y</button>
+        <button onclick="filterUsers('Z')">Z</button>
+
+      <button onclick="fetchUsers()">Tất cả</button>
+      
+      <h3>Tìm Kiếm Người Dùng</h3>
+      <input type="text" id="user-search" placeholder="Nhập tên người dùng...">
+      <button onclick="searchUsers()">Tìm kiếm</button>
+    </div>
+
+    <!-- Bảng Người Dùng -->
+    <div id="user-management">
+      <table id="user-table">
+        <tr>
+          <th>ID</th>
+          <th>Người dùng</th>
+          <th>Vai trò</th>
+        </tr>
+        <!-- Dữ liệu sẽ được thêm vào bằng JavaScript -->
+      </table>
+    </div>
+
+    <!-- Bảng Công Việc -->
+    <div id="task-management">
+      <h3>Quản lý Công việc</h3>
+      <table id="task-table">
+        <tr>
+          <th>ID</th>
+          <th>Công việc</th>
+          <th>Người dùng</th>
+          <th>Hoàn thành</th>
+        </tr>
+        <!-- Dữ liệu sẽ được thêm vào bằng JavaScript -->
+      </table>
+    </div>
+  </div>
+
+  <!-- Phần thêm task cho user -->
+  <div id="task-section" style="display: none;">
+    <h2>Danh sách Công việc của bạn</h2>
+    <div id="task-input-container">
+      <input type="text" id="task-input" placeholder="Nhập công việc...">
+      <button id="add-task-btn" onclick="addTask()">Thêm</button>
+    </div>
+    <ul id="task-list"></ul>
+  </div>
+
+  <footer id="creator-footer">
+    <p>Creator: Võ Lâm Chí Vĩnh</p>
+  </footer>
+  
+  <script src="script.js"></script>
+</body>
+</html>
